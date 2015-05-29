@@ -1,0 +1,66 @@
+package Maze;
+
+import java.awt.*;
+import java.io.*;
+import java.util.*;
+
+import javax.swing.ImageIcon;
+
+public class Map {
+
+	private Scanner scanner;
+	private String Map[] = new String[14]; //how many tiles are going down
+	private Image grass, 
+				finish,
+				  wall;
+	
+	public Map(){
+		ImageIcon img = new ImageIcon("C://Users//kettler_n////Images//grass.png");
+		grass = img.getImage();//now we can use grass anywhere b/c of getImage
+		img = new ImageIcon("C://Users//kettler_n////Images//wall.png");
+		wall = img.getImage();
+		img = new ImageIcon("C://Users//kettler_n////Images//finish.png");
+		finish = img.getImage();
+		
+		openFile();
+		readFile();
+		closeFile();
+	}
+	
+	public Image getGrass(){
+		return grass;
+	}
+	
+	public Image getWall(){
+		return wall;
+	}
+	
+	public Image getFinish(){
+		return finish;
+	}
+	
+	public String getMap(int x, int y){
+		String index = Map[y].substring(x, x + 1);
+		return index;
+	}
+	
+	public void openFile(){
+		try {
+			scanner = new Scanner(new File("C://Users//kettler_n//Images//Map.txt")); //need try catch w/ scanner to catch any errors
+		} catch (FileNotFoundException e) {
+			System.out.println("Error loading the map");
+		}
+	}
+	
+	public void readFile(){
+		while(scanner.hasNext()){//checks to see if file has a line
+			for(int i =0; i < 14; i++){
+				Map[i] = scanner.next();
+			}
+		}
+	}
+	
+	public void closeFile(){
+		scanner.close();
+	}
+}
