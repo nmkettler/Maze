@@ -1,0 +1,21 @@
+package Maze;
+
+import javax.swing.JFrame;
+
+public class Maze {
+
+	public static void main(String[] args) {
+		new Maze();
+
+	}
+
+	public Maze(){
+		JFrame fr = new JFrame();
+		fr.setTitle("Maze Game");
+		fr.add(new Board());
+		fr.setSize(464,485);
+		fr.setLocationRelativeTo(null);
+		fr.setVisible(true);
+		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+}
